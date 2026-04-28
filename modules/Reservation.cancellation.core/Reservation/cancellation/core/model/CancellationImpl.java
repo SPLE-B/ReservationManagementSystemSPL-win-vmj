@@ -28,8 +28,7 @@ public class CancellationImpl extends CancellationComponent {
 
 	public CancellationImpl(String reason, String cancelledAt) {
 		Random r = new Random();
-		this. = Math.abs(r.nextInt());
-		this.idCancellation = idCancellation;
+		this.idCancellation= Math.abs(r.nextInt());
 		this.idBooking = idBooking;
 		this.reason = reason;
 		this.cancelledAt = cancelledAt;
