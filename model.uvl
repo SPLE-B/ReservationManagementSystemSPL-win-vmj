@@ -1,0 +1,29 @@
+namespace ReservationManagement
+
+features
+	ReservationManagement {abstract true}
+		mandatory
+			BookingType {abstract true}
+				alternative
+					Daily
+					SessionBased
+			Pricing
+				optional
+					Dynamic
+			Payment {abstract true}
+				or
+					Merchant
+					BankTransfer
+		optional
+			Notification
+				optional
+					Email
+			Cancellation
+				optional
+					Paid
+			Rating
+				optional
+					WithComment
+
+constraints
+	Cancellation => !Merchant
