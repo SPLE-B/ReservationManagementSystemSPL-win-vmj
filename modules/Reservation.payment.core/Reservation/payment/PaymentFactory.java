@@ -1,7 +1,7 @@
 package Reservation.payment;
 
 import Reservation.payment.core.model.Payment;
-import Reservation.payment.core.model.invalid;
+import Reservation.payment.core.model.PaymentImpl;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 
