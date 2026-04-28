@@ -16,7 +16,8 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class BookingTypeComponent implements BookingType{
 	@Id
-	protected int idBooking; 
+	protected int idBooking;
+	protected int idResource; 
 	protected String bookingDate;
 	protected String statusBooking;
 	protected int totalPrice;
