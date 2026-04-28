@@ -18,6 +18,7 @@ public abstract class PricingComponent implements Pricing{
 	@Id
 	protected int idPricing; 
 	protected int basePrice;
+	protected int idResource;
 	protected String objectName = PricingComponent.class.getName();
 
 	public PricingComponent() {
