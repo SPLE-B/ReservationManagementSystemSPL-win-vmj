@@ -18,6 +18,7 @@ public abstract class PaymentComponent implements Payment{
 	@Id
 	protected int idPayment; 
 	protected int amount;
+	protected int idBooking;
 	protected String statusPayment;
 	protected String metodePayment;
 	protected String objectName = PaymentComponent.class.getName();
