@@ -18,6 +18,7 @@ public abstract class RatingComponent implements Rating{
 	@Id
 	protected int idRating; 
 	protected int score;
+	protected int idResource;
 	protected String objectName = RatingComponent.class.getName();
 
 	public RatingComponent() {

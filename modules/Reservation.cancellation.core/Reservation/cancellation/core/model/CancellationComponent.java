@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Table(name="cancellation_comp")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class CancellationComponent implements Cancellation{
+	@Id
 	protected int idCancellation;
 	protected int idBooking;
 	

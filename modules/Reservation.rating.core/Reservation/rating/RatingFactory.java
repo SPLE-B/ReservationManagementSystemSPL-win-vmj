@@ -1,7 +1,7 @@
 package Reservation.rating;
 
 import Reservation.rating.core.model.Rating;
-import Reservation.rating.core.model.invalid;
+import Reservation.rating.core.model.RatingImpl;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 
