@@ -4,16 +4,16 @@ import java.util.*;
 import id.ac.ui.cs.prices.winvmj.core.Route;
 import id.ac.ui.cs.prices.winvmj.core.VMJExchange;
 import id.ac.ui.cs.prices.winvmj.core.exceptions.*;
-import Reservation.rating.Rating;
+import Reservation.rating.RatingFactory;
 import id.ac.ui.cs.prices.winvmj.auth.annotations.Restricted;
 import Reservation.rating.core.model.Rating;
-import Reservation.rating.core.service.Rating;
+import Reservation.rating.core.service.RatingServiceImpl;
 //add other required packages
 
 
-public class Rating extends Rating{
+public class RatingResourceImpl extends RatingResourceComponent{
 	
-	private Rating ratingServiceImpl = new Rating();
+	private RatingServiceImpl ratingServiceImpl = new RatingServiceImpl();
 
 	
     @Route(url="call/rating/save")

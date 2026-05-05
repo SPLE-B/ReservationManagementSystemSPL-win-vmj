@@ -15,12 +15,12 @@ import java.nio.charset.StandardCharsets;
 import id.ac.ui.cs.prices.winvmj.core.Route;
 import id.ac.ui.cs.prices.winvmj.core.VMJExchange;
 import id.ac.ui.cs.prices.winvmj.core.exceptions.*;
-import Reservation.rating.Rating;
+import Reservation.rating.RatingFactory;
 import Reservation.rating.core.model.Rating;
 import id.ac.ui.cs.prices.winvmj.auth.annotations.Restricted;
 //add other required packages
 
-public class Rating extends Rating{
+public class RatingServiceImpl extends RatingServiceComponent{
 
     public Rating createRating(Map<String, Object> requestBody){
 		String idResourceStr = (String) requestBody.get("idResource");
@@ -30,7 +30,7 @@ public class Rating extends Rating{
 		
 		//to do: fix association attributes
 		
-		Rating rating = RatingFactory.createRating("Reservation.rating.core.model.Rating", idResource, score);
+		Rating rating = RatingFactory.createRating("Reservation.rating.core.model.RatingImpl", idResource, score);
 		Repository.saveObject(rating);
 		return rating;
 	}
@@ -43,7 +43,7 @@ public class Rating extends Rating{
 		int score = Integer.parseInt(scoreStr);
 		
 		//to do: fix association attributes
-		Rating rating = RatingFactory.createRating("Reservation.rating.core.model.Rating",idRating, idResource, score);
+		Rating rating = RatingFactory.createRating("Reservation.rating.core.model.RatingImpl",idRating, idResource, score);
 		Repository.saveObject(rating);
 		return rating;
 	}
