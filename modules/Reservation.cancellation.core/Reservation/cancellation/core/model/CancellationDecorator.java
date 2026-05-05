@@ -18,17 +18,17 @@ public abstract class CancellationDecorator extends CancellationComponent{
 	public CancellationDecorator () {
 		super();
 		Random r = new Random();
-		this. = Math.abs(r.nextInt());
+		this.idCancellation = Math.abs(r.nextInt());
 	}
 
-	public CancellationDecorator (, CancellationComponent record) {
-		this. =  ;
+	public CancellationDecorator (int idCancellation, CancellationComponent record) {
+		this.idCancellation = idCancellation;
 		this.record = record;
 	}
 	
 	public CancellationDecorator (CancellationComponent record, String objectName) {
 		Random r = new Random();
-		this. = Math.abs(r.nextInt());
+		this.idCancellation = Math.abs(r.nextInt());
 		this.record = record;
 		this.objectName=objectName;
 	}

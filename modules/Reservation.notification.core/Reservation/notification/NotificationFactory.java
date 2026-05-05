@@ -1,7 +1,6 @@
 package Reservation.notification;
 
 import Reservation.notification.core.model.Notification;
-import Reservation.notification.core.model.invalid;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 

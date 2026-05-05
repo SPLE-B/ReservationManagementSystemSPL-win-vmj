@@ -1,7 +1,6 @@
 package Reservation.bookingtype;
 
 import Reservation.bookingtype.core.model.BookingType;
-import Reservation.bookingtype.core.model.invalid;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 

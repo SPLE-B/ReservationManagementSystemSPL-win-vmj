@@ -1,7 +1,6 @@
 package Reservation.cancellation;
 
 import Reservation.cancellation.core.model.Cancellation;
-import Reservation.cancellation.core.model.invalid;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 

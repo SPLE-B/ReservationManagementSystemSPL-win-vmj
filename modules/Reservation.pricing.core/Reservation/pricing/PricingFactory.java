@@ -1,7 +1,6 @@
 package Reservation.pricing;
 
 import Reservation.pricing.core.model.Pricing;
-import Reservation.pricing.core.model.invalid;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 
