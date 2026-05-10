@@ -15,6 +15,7 @@ module reservationmanagement.product.ayoindonesia {
     requires Reservation.payment.core;
     requires Reservation.notification.core;
     requires Reservation.rating.core;
+    requires Reservation.resource.core;
     requires Reservation.cancellation.core;
 
 }

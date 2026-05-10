@@ -29,8 +29,6 @@ services:
       dockerfile: Dockerfile
     container_name: ayoindonesia-backend
     environment:
-      AMANAH_HOST_BE: ${AMANAH_HOST_BE:-0.0.0.0}
-      AMANAH_PORT_BE: ${AMANAH_PORT_BE:-7776}
       # Internal ports are fixed (7776, 9464) - configured in Dockerfile
       AMANAH_DB_URL: ${AMANAH_DB_URL:-jdbc:postgresql://postgres:5432/ayoindonesia}
       AMANAH_DB_USERNAME: ${AMANAH_DB_USERNAME:-postgres}

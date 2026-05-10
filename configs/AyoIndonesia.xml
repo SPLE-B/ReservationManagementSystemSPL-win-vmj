@@ -15,4 +15,5 @@
 	<feature name="Paid"/>
 	<feature manual="selected" name="Rating"/>
 	<feature name="WithComment"/>
+	<feature automatic="selected" name="Resource"/>
 </configuration>

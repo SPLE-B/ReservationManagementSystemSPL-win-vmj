@@ -42,6 +42,10 @@ import Reservation.rating.RatingResourceFactory;
 import Reservation.rating.core.resource.RatingResource;
 import Reservation.rating.RatingServiceFactory;
 import Reservation.rating.core.service.RatingService;
+import Reservation.resource.ResourceResourceFactory;
+import Reservation.resource.core.resource.ResourceResource;
+import Reservation.resource.ResourceServiceFactory;
+import Reservation.resource.core.service.ResourceService;
 import Reservation.cancellation.CancellationResourceFactory;
 import Reservation.cancellation.core.resource.CancellationResource;
 import Reservation.cancellation.CancellationServiceFactory;
@@ -106,6 +110,10 @@ public class AyoIndonesia {
 		configuration.addAnnotatedClass(Reservation.rating.core.model.RatingComponent.class);
 		configuration.addAnnotatedClass(Reservation.rating.core.model.RatingDecorator.class);
 		configuration.addAnnotatedClass(Reservation.rating.core.model.RatingImpl.class);
+		configuration.addAnnotatedClass(Reservation.resource.core.model.Resource.class);
+		configuration.addAnnotatedClass(Reservation.resource.core.model.ResourceComponent.class);
+		configuration.addAnnotatedClass(Reservation.resource.core.model.ResourceDecorator.class);
+		configuration.addAnnotatedClass(Reservation.resource.core.model.ResourceImpl.class);
 		configuration.addAnnotatedClass(Reservation.cancellation.core.model.Cancellation.class);
 		configuration.addAnnotatedClass(Reservation.cancellation.core.model.CancellationComponent.class);
 		configuration.addAnnotatedClass(Reservation.cancellation.core.model.CancellationDecorator.class);
@@ -194,6 +202,14 @@ public class AyoIndonesia {
             .createRatingResource("Reservation.rating.core.resource.RatingResourceImpl"
                 );
 			
+        ResourceService resourceResource2Service = ResourceServiceFactory
+            .createResourceService("Reservation.resource.core.service.ResourceServiceImpl"
+            	);		
+
+        ResourceResource resource2Resource = ResourceResourceFactory
+            .createResourceResource("Reservation.resource.core.resource.ResourceResourceImpl"
+                );
+			
         CancellationService cancellationCancellation2Service = CancellationServiceFactory
             .createCancellationService("Reservation.cancellation.core.service.CancellationServiceImpl"
             	);		
@@ -208,6 +224,12 @@ public class AyoIndonesia {
 		
 		System.out.println("cancellationCancellation2Service endpoints binding");
 		Router.route(cancellationCancellation2Service);
+		
+		System.out.println("resource2Resource endpoints binding");
+		Router.route(resource2Resource);
+		
+		System.out.println("resourceResource2Service endpoints binding");
+		Router.route(resourceResource2Service);
 		
 		System.out.println("ratingRating2Resource endpoints binding");
 		Router.route(ratingRating2Resource);
@@ -289,6 +311,15 @@ public class AyoIndonesia {
 			new HashMap<String, String[]>() {{ 
 				put("components", new String[] {
 					Reservation.rating.core.model.RatingComponent.class.getName()
+				});
+				put("deltas", new String[] {
+				});
+			}});
+		featureModelMappings.put(
+            Reservation.resource.core.model.ResourceComponent.class.getName(),
+			new HashMap<String, String[]>() {{ 
+				put("components", new String[] {
+					Reservation.resource.core.model.ResourceComponent.class.getName()
 				});
 				put("deltas", new String[] {
 				});
