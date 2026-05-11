@@ -1,7 +1,6 @@
 package Reservation.resource;
 
 import Reservation.resource.core.model.Resource;
-import Reservation.resource.core.model.invalid;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 
