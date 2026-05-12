@@ -24,8 +24,6 @@ features
 			Rating
 				optional
 					WithComment
-		mandatory
-			Resource
 
 constraints
 	Cancellation => !Merchant

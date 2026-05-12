@@ -25,7 +25,7 @@ public class PricingImpl extends PricingComponent {
 		this.idResource = idResource;
 	}
 
-	public PricingImpl(int basePrice) {
+	public PricingImpl(int basePrice, int idResource) {
 		Random r = new Random();
 		this.idPricing = Math.abs(r.nextInt());
 		this.basePrice = basePrice;

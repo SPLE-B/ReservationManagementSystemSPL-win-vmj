@@ -21,7 +21,15 @@ public class BookingTypeResourceImpl extends BookingTypeResourceComponent{
 		if (vmjExchange.getHttpMethod().equals("OPTIONS")) {
 			return null;
 		}
-		BookingType bookingtype = createBookingType(vmjExchange);
+	    Map<String, Object> requestBody = vmjExchange.getPayload();
+	    
+	    if (requestBody.containsKey("idBooking") && requestBody.get("idBooking") != null) {
+	        String idStr = String.valueOf(requestBody.get("idBooking"));
+	        int id = Integer.parseInt(idStr);
+	        bookingtypeServiceImpl.createBookingType(requestBody, id);
+	    } else {
+	        bookingtypeServiceImpl.createBookingType(requestBody);
+	    }
 		return bookingtypeServiceImpl.getAllBookingType();
 	}
 

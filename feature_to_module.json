@@ -4,6 +4,6 @@
     "Payment": ["Reservation.payment.core"],
     "Notification": ["Reservation.notification.core"],
     "Rating": ["Reservation.rating.core"],
-    "Resource": ["Reservation.resource.core"],
+    "ReservationManagement": ["Reservation.resource.core"],
     "Cancellation": ["Reservation.cancellation.core"]
 }
