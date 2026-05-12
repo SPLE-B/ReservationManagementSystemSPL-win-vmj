@@ -57,8 +57,8 @@ public class CancellationResourceImpl extends CancellationResourceComponent{
 	
     @Route(url="call/cancellation/detail")
     public HashMap<String, Object> getCancellation(VMJExchange vmjExchange){
-		Map<String, Object> requestBody = vmjExchange.getPayload();
-		return cancellationServiceImpl.getCancellation(requestBody);
+		String idStr = vmjExchange.getGETParam("idCancellation");
+		return cancellationServiceImpl.getCancellation(idStr);
 	}
 
 	

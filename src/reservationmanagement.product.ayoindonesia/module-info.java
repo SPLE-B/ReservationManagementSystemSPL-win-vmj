@@ -3,7 +3,6 @@ module reservationmanagement.product.ayoindonesia {
     requires id.ac.ui.cs.prices.winvmj.auth.model;
     requires id.ac.ui.cs.prices.winvmj.core;
     requires id.ac.ui.cs.prices.winvmj.hibernate;
-    requires org.slf4j;
     
     requires net.bytebuddy;
     requires java.xml.bind;
@@ -18,6 +17,5 @@ module reservationmanagement.product.ayoindonesia {
     requires Reservation.rating.core;
     requires Reservation.resource.core;
     requires Reservation.cancellation.core;
-
 
 }

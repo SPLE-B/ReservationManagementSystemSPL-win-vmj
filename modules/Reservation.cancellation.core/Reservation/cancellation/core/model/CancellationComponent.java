@@ -16,9 +16,8 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class CancellationComponent implements Cancellation{
 	@Id
-	protected int idCancellation;
+	protected int idCancellation; 
 	protected int idBooking;
-	
 	protected String reason;
 	protected String cancelledAt;
 	protected String objectName = CancellationComponent.class.getName();
@@ -27,7 +26,8 @@ public abstract class CancellationComponent implements Cancellation{
 
 	} 
 
-	public CancellationComponent(int idCancellation, int idBooking, String reason, String cancelledAt
+	public CancellationComponent(
+        int idCancellation, int idBooking, String reason, String cancelledAt
     ) {
         this.idCancellation = idCancellation;
         this.idBooking = idBooking;

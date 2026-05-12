@@ -21,8 +21,17 @@ public class ResourceResourceImpl extends ResourceResourceComponent{
 		if (vmjExchange.getHttpMethod().equals("OPTIONS")) {
 			return null;
 		}
-		Resource resource = createResource(vmjExchange);
-		return resourceServiceImpl.getAllResource();
+	    Map<String, Object> requestBody = vmjExchange.getPayload();
+	    
+	    if (requestBody.containsKey("idResource") && requestBody.get("idResource") != null) {
+	        String idStr = String.valueOf(requestBody.get("idResource"));
+	        int id = Integer.parseInt(idStr);
+	        resourceServiceImpl.createResource(requestBody, id);
+	    } else {
+	        resourceServiceImpl.createResource(requestBody);
+	    }
+	    
+	    return resourceServiceImpl.getAllResource();
 	}
 
     public Resource createResource(VMJExchange vmjExchange){

@@ -11,16 +11,11 @@ import java.util.Properties;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import id.ac.ui.cs.prices.winvmj.core.VMJCors;
 import id.ac.ui.cs.prices.winvmj.core.VMJServer;
 import id.ac.ui.cs.prices.winvmj.core.Router;
 import id.ac.ui.cs.prices.winvmj.hibernate.HibernateUtil;
 import org.hibernate.cfg.Configuration;
-
-
 
 import id.ac.ui.cs.prices.winvmj.auth.model.UserResourceFactory;
 import id.ac.ui.cs.prices.winvmj.auth.model.RoleResourceFactory;
@@ -57,12 +52,6 @@ import Reservation.cancellation.CancellationServiceFactory;
 import Reservation.cancellation.core.service.CancellationService;
 
 public class AyoIndonesia {
-
-	private static final Logger logger;
-	
-	static {
-		logger = LoggerFactory.getLogger(AyoIndonesia.class);
-	}
     
 	public static void main(String[] args) {
 
@@ -87,16 +76,18 @@ public class AyoIndonesia {
         setDBProperties("AMANAH_DB_USERNAME", "username", configuration);
         setDBProperties("AMANAH_DB_PASSWORD","password", configuration);
 
-		configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserComponent.class);
-        configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserDecorator.class);
-        configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserImpl.class);
+		configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.Role.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.RoleComponent.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.RoleDecorator.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.RoleImpl.class);
+        configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserRole.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserRoleComponent.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserRoleDecorator.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserRoleImpl.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.User.class);
+        configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserComponent.class);
+        configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserDecorator.class);
+        configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.core.model.UserImpl.class);
         configuration.addAnnotatedClass(id.ac.ui.cs.prices.winvmj.auth.model.passworded.model.UserImpl.class);
 
 		configuration.addAnnotatedClass(Reservation.bookingtype.core.model.BookingType.class);
@@ -138,12 +129,11 @@ public class AyoIndonesia {
 		// Try to initialize Hibernate - graceful failure if DB not available
 		try {
 			HibernateUtil.buildSessionFactory(configuration);
-
-
 			createObjectsAndBindEndPoints();
 		} catch (Exception e) {
-			logger.warn("Database connection failed - server running but database features disabled");
-			logger.debug("Database error: {}", e.getMessage());
+			System.out.println("== WARNING: Database connection failed ==");
+			System.out.println("Server running but database features disabled.");
+			System.out.println("Error: " + e.getMessage());
 		}
 	}
 
@@ -158,7 +148,7 @@ public class AyoIndonesia {
 	}
 
 	public static void createObjectsAndBindEndPoints() {
-		logger.info("Creating objects and binding endpoints");
+		System.out.println("== CREATING OBJECTS AND BINDING ENDPOINTS ==");
 		UserResource userResource = UserResourceFactory
             .createUserResource("id.ac.ui.cs.prices.winvmj.auth.model.core.resource.UserResourceImpl"
 			);
@@ -229,49 +219,49 @@ public class AyoIndonesia {
                 );
 			
 
-		logger.info("Binding endpoints for cancellationCancellation2Resource");
+		System.out.println("cancellationCancellation2Resource endpoints binding");
 		Router.route(cancellationCancellation2Resource);
 		
-		logger.info("Binding endpoints for cancellationCancellation2Service");
+		System.out.println("cancellationCancellation2Service endpoints binding");
 		Router.route(cancellationCancellation2Service);
 		
-		logger.info("Binding endpoints for resource2Resource");
+		System.out.println("resource2Resource endpoints binding");
 		Router.route(resource2Resource);
 		
-		logger.info("Binding endpoints for resourceResource2Service");
+		System.out.println("resourceResource2Service endpoints binding");
 		Router.route(resourceResource2Service);
 		
-		logger.info("Binding endpoints for ratingRating2Resource");
+		System.out.println("ratingRating2Resource endpoints binding");
 		Router.route(ratingRating2Resource);
 		
-		logger.info("Binding endpoints for ratingRating2Service");
+		System.out.println("ratingRating2Service endpoints binding");
 		Router.route(ratingRating2Service);
 		
-		logger.info("Binding endpoints for notificationNotification2Resource");
+		System.out.println("notificationNotification2Resource endpoints binding");
 		Router.route(notificationNotification2Resource);
 		
-		logger.info("Binding endpoints for notificationNotification2Service");
+		System.out.println("notificationNotification2Service endpoints binding");
 		Router.route(notificationNotification2Service);
 		
-		logger.info("Binding endpoints for paymentPayment2Resource");
+		System.out.println("paymentPayment2Resource endpoints binding");
 		Router.route(paymentPayment2Resource);
 		
-		logger.info("Binding endpoints for paymentPayment2Service");
+		System.out.println("paymentPayment2Service endpoints binding");
 		Router.route(paymentPayment2Service);
 		
-		logger.info("Binding endpoints for pricingPricing2Resource");
+		System.out.println("pricingPricing2Resource endpoints binding");
 		Router.route(pricingPricing2Resource);
 		
-		logger.info("Binding endpoints for pricingPricing2Service");
+		System.out.println("pricingPricing2Service endpoints binding");
 		Router.route(pricingPricing2Service);
 		
-		logger.info("Binding endpoints for bookingtypeBookingType2Resource");
+		System.out.println("bookingtypeBookingType2Resource endpoints binding");
 		Router.route(bookingtypeBookingType2Resource);
 		
-		logger.info("Binding endpoints for bookingtypeBookingType2Service");
+		System.out.println("bookingtypeBookingType2Service endpoints binding");
 		Router.route(bookingtypeBookingType2Service);
 		
-		logger.info("Binding auth endpoints");
+		System.out.println("authResource endpoints binding");
 		Router.route(userPasswordedResource);
 		Router.route(roleResource);
 		Router.route(userResource);
@@ -385,7 +375,9 @@ public class AyoIndonesia {
 		} else {
 			String hibernatePropertyVal = configuration.getProperty(propertyName);
 			if (hibernatePropertyVal == null) {
-				logger.warn("Please check '{}' in your local environment variable or 'hibernate.connection.{}' in your 'hibernate.properties' file!", varname, typeProp);
+				String error_message = String.format("Please check '%s' in your local environment variable or "
+                	+ "'hibernate.connection.%s' in your 'hibernate.properties' file!", varname, typeProp);
+            	System.out.println(error_message);
 			}
 		}
 	}
@@ -415,10 +407,12 @@ public class AyoIndonesia {
             propertyValue = properties.getProperty("allowedOrigin");
             VMJCors.setAllowedOrigin(propertyValue);
             
-        		} catch (IOException e) {
+        } catch (IOException e) {
 			VMJCors.setAllowedMethod("GET, POST, PUT, PATCH, DELETE");
 			VMJCors.setAllowedOrigin("*");
-			logger.info("cors.properties not found, using defaults (allowedMethod=GET,POST,PUT,PATCH,DELETE, allowedOrigin=*)");
+			System.out.println("Buat file cors.properties terlebih dahulu pada src-gen/(namaProduk) dengan contoh sebagai berikut:");
+			System.out.println("allowedMethod = GET, POST");
+			System.out.println("allowedOrigin = http://example.com");
         }
     }
 

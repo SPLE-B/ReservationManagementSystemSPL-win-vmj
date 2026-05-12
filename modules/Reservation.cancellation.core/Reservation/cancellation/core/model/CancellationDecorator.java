@@ -22,7 +22,7 @@ public abstract class CancellationDecorator extends CancellationComponent{
 	}
 
 	public CancellationDecorator (int idCancellation, CancellationComponent record) {
-		this.idCancellation = idCancellation;
+		this.idCancellation =  idCancellation;
 		this.record = record;
 	}
 	

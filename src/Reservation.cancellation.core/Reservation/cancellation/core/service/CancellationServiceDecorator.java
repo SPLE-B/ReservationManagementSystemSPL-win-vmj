@@ -20,8 +20,8 @@ public abstract class CancellationServiceDecorator extends CancellationServiceCo
 		return record.createCancellation(requestBody, id);
 	}
 
-	public HashMap<String, Object> getCancellation(Map<String, Object> requestBody){
-		return record.getCancellation(requestBody);
+	public HashMap<String, Object> getCancellation(String idStr){
+		return record.getCancellation(idStr);
 	}
 
 	public List<HashMap<String,Object>> getAllCancellation(){
