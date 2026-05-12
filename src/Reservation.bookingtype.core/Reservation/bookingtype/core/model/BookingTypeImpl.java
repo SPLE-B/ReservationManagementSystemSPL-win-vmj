@@ -28,7 +28,7 @@ public class BookingTypeImpl extends BookingTypeComponent {
 		this.idResource = idResource;
 	}
 
-	public BookingTypeImpl(String bookingDate, String statusBooking, int totalPrice, String createdAt) {
+	public BookingTypeImpl(String bookingDate, String statusBooking, int totalPrice, String createdAt, int idResource) {
 		Random r = new Random();
 		this.idBooking = Math.abs(r.nextInt());
 		this.bookingDate = bookingDate;

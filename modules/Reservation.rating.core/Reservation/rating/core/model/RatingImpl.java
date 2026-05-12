@@ -25,7 +25,7 @@ public class RatingImpl extends RatingComponent {
 		this.score = score;
 	}
 
-	public RatingImpl(int score) {
+	public RatingImpl(int idResource, int score) {
 		Random r = new Random();
 		this.idRating = Math.abs(r.nextInt());
 		this.idResource = idResource;
