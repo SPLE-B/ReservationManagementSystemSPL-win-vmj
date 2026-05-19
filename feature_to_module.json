@@ -1,1 +1,14 @@
+<<<<<<< refs/remotes/origin/pricing/farrel
 {}
+=======
+{
+    "BookingType" : ["Reservation.bookingtype.core"],
+    "Pricing": ["Reservation.pricing.core"],
+    "Dynamic": ["Reservation.pricing.dynamic"],
+    "Payment": ["Reservation.payment.core"],
+    "Notification": ["Reservation.notification.core"],
+    "Rating": ["Reservation.rating.core"],
+    "ReservationManagement": ["Reservation.resource.core"],
+    "Cancellation": ["Reservation.cancellation.core"]
+}
+>>>>>>> local
