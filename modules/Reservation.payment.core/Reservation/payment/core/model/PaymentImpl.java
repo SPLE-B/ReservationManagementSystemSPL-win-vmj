@@ -27,7 +27,7 @@ public class PaymentImpl extends PaymentComponent {
 		this.metodePayment = metodePayment;
 	}
 
-	public PaymentImpl(int amount, String statusPayment, String metodePayment) {
+	public PaymentImpl(int idBooking, int amount, String statusPayment, String metodePayment) {
 		Random r = new Random();
 		this.idPayment = Math.abs(r.nextInt());
 		this.idBooking = idBooking;

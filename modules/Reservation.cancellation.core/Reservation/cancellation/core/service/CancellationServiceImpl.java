@@ -23,8 +23,6 @@ import id.ac.ui.cs.prices.winvmj.auth.annotations.Restricted;
 public class CancellationServiceImpl extends CancellationServiceComponent{
 
     public Cancellation createCancellation(Map<String, Object> requestBody){
-		String idCancellationStr = (String) requestBody.get("idCancellation");
-		int idCancellation = Integer.parseInt(idCancellationStr);
 		String idBookingStr = (String) requestBody.get("idBooking");
 		int idBooking = Integer.parseInt(idBookingStr);
 		String reason = (String) requestBody.get("reason");
@@ -32,14 +30,13 @@ public class CancellationServiceImpl extends CancellationServiceComponent{
 		
 		//to do: fix association attributes
 		
-		Cancellation cancellation = CancellationFactory.createCancellation("Reservation.cancellation.core.model.CancellationImpl", idCancellation, idBooking, reason, cancelledAt);
+		Cancellation cancellation = CancellationFactory.createCancellation("Reservation.cancellation.core.model.CancellationImpl", reason, cancelledAt, idBooking);
 		Repository.saveObject(cancellation);
 		return cancellation;
 	}
 
 	public Cancellation createCancellation(Map<String, Object> requestBody, int id){
-		String idCancellationStr = (String) requestBody.get("idCancellation");
-		int idCancellation = Integer.parseInt(idCancellationStr);
+		int idCancellation = id;
 		String idBookingStr = (String) requestBody.get("idBooking");
 		int idBooking = Integer.parseInt(idBookingStr);
 		String reason = (String) requestBody.get("reason");
@@ -52,12 +49,9 @@ public class CancellationServiceImpl extends CancellationServiceComponent{
 	}
 
     public HashMap<String, Object> updateCancellation(Map<String, Object> requestBody){
-		String idStr = (String) requestBody.get("");
+		String idStr = (String) requestBody.get("idCancellation");
 		int id = Integer.parseInt(idStr);
 		Cancellation cancellation = Repository.getObject(id);
-		
-		String idCancellationStr = (String) requestBody.get("idCancellation");
-		cancellation.setIdCancellation(Integer.parseInt(idCancellationStr));
 		
 		String idBookingStr = (String) requestBody.get("idBooking");
 		cancellation.setIdBooking(Integer.parseInt(idBookingStr));
@@ -74,7 +68,7 @@ public class CancellationServiceImpl extends CancellationServiceComponent{
 	}
 
     public HashMap<String, Object> getCancellation(Map<String, Object> requestBody){
-		String idStr = (String) requestBody.get(""); 
+		String idStr = (String) requestBody.get("idCancellation"); 
 		int id = Integer.parseInt(idStr);
 		Cancellation cancellation = Repository.getObject(id);
 		return cancellation.toHashMap();
@@ -83,7 +77,7 @@ public class CancellationServiceImpl extends CancellationServiceComponent{
 	public HashMap<String, Object> getCancellationById(int id){
 		List<HashMap<String, Object>> cancellationList = getAllCancellation();
 		for (HashMap<String, Object> cancellation : cancellationList){
-			int record_id = ((Double) cancellation.get("")).intValue();
+			int record_id = ((Double) cancellation.get("idCancellation")).intValue();
 			if (record_id == id){
 				return cancellation;
 			}
@@ -106,7 +100,7 @@ public class CancellationServiceImpl extends CancellationServiceComponent{
 	}
 
     public List<HashMap<String,Object>> deleteCancellation(Map<String, Object> requestBody){
-		String idStr = ((String) requestBody.get(""));
+		String idStr = ((String) requestBody.get("idCancellation"));
 		int id = Integer.parseInt(idStr);
 		Repository.deleteObject(id);
 		return getAllCancellation();

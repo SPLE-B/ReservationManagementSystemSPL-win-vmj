@@ -1,9 +1,15 @@
 {
-    "BookingType" : ["Reservation.bookingtype.core"],
-    "Pricing": ["Reservation.pricing.core"],
-    "Payment": ["Reservation.payment.core"],
+    "Daily" : ["Reservation.bookingtype.core", "Reservation.bookingtype.daily"],
+    "SessionBased": ["Reservation.bookingtype.core", "Reservation.bookingtype.sessionbased"],
+    "Pricing": ["Reservation.pricing.core", "Reservation.resource.core"],
+    "Dynamic": ["Reservation.pricing.dynamic"],
+    "BankTransfer": ["Reservation.payment.core", "Reservation.payment.banktransfer"],
+    "Merchant": ["Reservation.payment.core", "Reservation.payment.merchant"],
     "Notification": ["Reservation.notification.core"],
+    "Email": ["Reservation.notification.email"],
     "Rating": ["Reservation.rating.core"],
+    "WithComment": ["Reservation.rating.comment"],
     "Resource": ["Reservation.resource.core"],
-    "Cancellation": ["Reservation.cancellation.core"]
+    "Cancellation": ["Reservation.cancellation.core"],
+    "Paid": ["Reservation.cancellation.cancellationpaid"]
 }

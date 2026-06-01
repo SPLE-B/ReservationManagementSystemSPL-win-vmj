@@ -25,8 +25,8 @@ dependencies {
     // Default WinVMJ dependencies
     implementation 'id.ac.ui.cs.prices.winvmj:core:2.4.0'
     implementation 'id.ac.ui.cs.prices.winvmj:hibernate:1.2.0'
-    implementation 'id.ac.ui.cs.prices.winvmj:auth:1.2.1'
-    implementation 'id.ac.ui.cs.prices.winvmj:auth.model:1.2.1'
+    implementation 'id.ac.ui.cs.prices.winvmj:auth:1.2.2'
+    implementation 'id.ac.ui.cs.prices.winvmj:auth.model:1.2.2'
     implementation fileTree(dir: 'libs', include: ['**/*.jar'])
     implementation 'javax.persistence:javax.persistence-api:2.2'
     implementation 'com.google.code.gson:gson:2.10.1'
@@ -37,6 +37,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
     implementation 'com.fasterxml:classmate:1.5.1'
     implementation 'org.json:json:20250517'
+    implementation 'org.slf4j:slf4j-api:2.0.13'
+    implementation 'ch.qos.logback:logback-classic:1.5.6'
+    implementation 'ch.qos.logback:logback-core:1.5.6'
 
 
 }
@@ -59,14 +62,7 @@ file('hibernate.properties').withReader { reader ->
 }
 def dbUser = hibernateProperties.getProperty('hibernate.connection.username')
 def dbPass = hibernateProperties.getProperty('hibernate.connection.password')
-def dbUrl = hibernateProperties.getProperty('hibernate.connection.url')
-// Extract database name from URL: jdbc:postgresql://host:port/dbname
-def dbName = dbUrl.substring(dbUrl.lastIndexOf('/') + 1)
-// Extract host and port
-def urlPattern = ~/jdbc:postgresql:\/\/([^:]+):(\d+)\/.*/
-def matcher = (dbUrl =~ urlPattern)
-def dbHost = matcher ? matcher[0][1] : 'localhost'
-def dbPort = matcher ? matcher[0][2] : '5432'
+def dbName = "reservationmanagement_product_ayo"
 
 // === 1. CREATE DATABASE ===
 task createDB(type: Exec) {
@@ -79,9 +75,9 @@ task createDB(type: Exec) {
         def sql = "SELECT 'CREATE DATABASE ${dbName}' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '${dbName}') \\gexec"
         def os = System.getProperty('os.name').toLowerCase()
         if (os.contains('windows')) {
-            commandLine 'cmd', '/c', "echo ${sql} | psql -h ${dbHost} -p ${dbPort} -U ${dbUser} -d postgres"
+            commandLine 'cmd', '/c', "echo ${sql} | psql -U ${dbUser}"
         } else {
-            commandLine 'bash', '-c', "echo \"${sql}\" | psql -h ${dbHost} -p ${dbPort} -U ${dbUser} -d postgres"
+            commandLine 'bash', '-c', "echo \"${sql}\" | psql -U ${dbUser}"
         }
     }
     doLast {
@@ -143,21 +139,21 @@ task loadSql(type: Exec) {
     group = 'application'
     description = 'Loads all SQL scripts into PostgreSQL.'
     dependsOn createTable
-    def sqlDir = file("sql")
+    def sqlDir = file("${rootProject.projectDir}/sql")
     def sqlFiles = sqlDir.exists() ? fileTree(dir: sqlDir, include: ['**/*.sql']).files : []
 
     doFirst {
         println 'Loading SQL scripts into the database...'
-        if (!sqlDir.exists()) throw new Exception("SQL directory '${sqlDir}' does not exist.")
-        if (sqlFiles.isEmpty()) throw new Exception("No SQL files found in ${sqlDir}.")
+        if (!sqlDir.exists()) throw new GradleException("SQL directory '${sqlDir}' does not exist.")
+        if (sqlFiles.isEmpty()) throw new GradleException("No SQL files found in ${sqlDir}.")
 
         def os = System.getProperty('os.name').toLowerCase()
         if (os.contains('windows')) {
     
-            def command = sqlFiles.collect { f -> "psql -a -f \"${f.absolutePath}\" \"postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}\"" }.join(" & ")
+            def command = sqlFiles.collect { f -> "psql -a -f \"${f.absolutePath}\" \"postgresql://${dbUser}:${dbPass}@localhost/${dbName}\"" }.join(" & ")
             commandLine 'cmd', '/c', command
         } else {
-            def command = sqlFiles.collect { f -> "psql -a -f \"${f.absolutePath}\" \"postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}\"" }.join(" ; ")
+            def command = sqlFiles.collect { f -> "psql -a -f \"${f.absolutePath}\" \"postgresql://${dbUser}:${dbPass}@localhost/${dbName}\"" }.join(" ; ")
             commandLine 'bash', '-c', command
         }
     }

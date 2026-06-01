@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>reservation-composer</name>
+	<name>badut</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -22,7 +22,16 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1777995177695</id>
+			<id>1771943308379</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+				<arguments>node_modules|\.git|_CREATED_BY_JAVA_LANGUAGE_SERVER_</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1780301221775</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

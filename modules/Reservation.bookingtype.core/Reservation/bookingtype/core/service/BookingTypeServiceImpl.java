@@ -18,6 +18,8 @@ import id.ac.ui.cs.prices.winvmj.core.exceptions.*;
 import Reservation.bookingtype.BookingTypeFactory;
 import Reservation.bookingtype.core.model.BookingType;
 import id.ac.ui.cs.prices.winvmj.auth.annotations.Restricted;
+
+import java.time.LocalDateTime;
 //add other required packages
 
 public class BookingTypeServiceImpl extends BookingTypeServiceComponent{
@@ -27,7 +29,7 @@ public class BookingTypeServiceImpl extends BookingTypeServiceComponent{
 		String statusBooking = (String) requestBody.get("statusBooking");
 		String totalPriceStr = (String) requestBody.get("totalPrice");
 		int totalPrice = Integer.parseInt(totalPriceStr);
-		String createdAt = (String) requestBody.get("createdAt");
+		String createdAt = LocalDateTime.now().toString();
 		String idResourceStr = (String) requestBody.get("idResource");
 		int idResource = Integer.parseInt(idResourceStr);
 		
@@ -44,7 +46,7 @@ public class BookingTypeServiceImpl extends BookingTypeServiceComponent{
 		String statusBooking = (String) requestBody.get("statusBooking");
 		String totalPriceStr = (String) requestBody.get("totalPrice");
 		int totalPrice = Integer.parseInt(totalPriceStr);
-		String createdAt = (String) requestBody.get("createdAt");
+		String createdAt = LocalDateTime.now().toString();
 		String idResourceStr = (String) requestBody.get("idResource");
 		int idResource = Integer.parseInt(idResourceStr);
 		

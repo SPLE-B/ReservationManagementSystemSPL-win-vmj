@@ -9,8 +9,8 @@ public interface Notification {
 	    public void setIdNotification(int idNotification);
 	    public String getMessage();
 	    public void setMessage(String message);
-	    public int getTypeMessage();
-	    public void setTypeMessage(int typeMessage);
+	    public String getTypeMessage();
+	    public void setTypeMessage(String typeMessage);
 	    public String getStatusMessage();
 	    public void setStatusMessage(String statusMessage);
 	HashMap<String, Object> toHashMap();

@@ -46,10 +46,10 @@ public abstract class NotificationDecorator extends NotificationComponent{
 	public void setMessage(String message) {
 		record.setMessage(message);
 	}
-	public int getTypeMessage() {
+	public String getTypeMessage() {
 		return record.getTypeMessage();
 	}
-	public void setTypeMessage(int typeMessage) {
+	public void setTypeMessage(String typeMessage) {
 		record.setTypeMessage(typeMessage);
 	}
 	public String getStatusMessage() {

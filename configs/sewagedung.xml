@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="ReservationManagement"/>
+	<feature automatic="selected" name="BookingType"/>
+	<feature manual="selected" name="Daily"/>
+	<feature automatic="unselected" name="SessionBased"/>
+	<feature automatic="selected" name="Pricing"/>
+	<feature manual="selected" name="Dynamic"/>
+	<feature automatic="selected" name="Payment"/>
+	<feature automatic="unselected" name="Merchant"/>
+	<feature automatic="selected" manual="selected" name="BankTransfer"/>
+	<feature automatic="selected" name="Notification"/>
+	<feature manual="selected" name="Email"/>
+	<feature automatic="selected" manual="selected" name="Cancellation"/>
+	<feature manual="selected" name="Paid"/>
+	<feature manual="selected" name="Rating"/>
+	<feature name="WithComment"/>
+</configuration>

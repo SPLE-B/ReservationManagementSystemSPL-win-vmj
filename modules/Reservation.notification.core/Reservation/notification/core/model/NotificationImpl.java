@@ -19,14 +19,14 @@ import javax.persistence.OneToMany;
 @Table(name="notification_impl")
 public class NotificationImpl extends NotificationComponent {
 
-	public NotificationImpl(int idNotification, String message, int typeMessage, String statusMessage) {
+	public NotificationImpl(int idNotification, String message, String typeMessage, String statusMessage) {
 		this.idNotification = idNotification;
 		this.message = message;
 		this.typeMessage = typeMessage;
 		this.statusMessage = statusMessage;
 	}
 
-	public NotificationImpl(String message, int typeMessage, String statusMessage) {
+	public NotificationImpl(String message, String typeMessage, String statusMessage) {
 		Random r = new Random();
 		this.idNotification = Math.abs(r.nextInt());
 		this.message = message;
@@ -50,11 +50,11 @@ public class NotificationImpl extends NotificationComponent {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public int getTypeMessage() {
+	public String getTypeMessage() {
 		return this.typeMessage;
 	}
 
-	public void setTypeMessage(int typeMessage) {
+	public void setTypeMessage(String typeMessage) {
 		this.typeMessage = typeMessage;
 	}
 	public String getStatusMessage() {

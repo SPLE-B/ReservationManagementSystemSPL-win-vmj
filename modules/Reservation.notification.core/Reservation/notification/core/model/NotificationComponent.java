@@ -18,7 +18,7 @@ public abstract class NotificationComponent implements Notification{
 	@Id
 	protected int idNotification; 
 	protected String message;
-	protected int typeMessage;
+	protected String typeMessage;
 	protected String statusMessage;
 	protected String objectName = NotificationComponent.class.getName();
 
@@ -27,7 +27,7 @@ public abstract class NotificationComponent implements Notification{
 	} 
 
 	public NotificationComponent(
-        int idNotification, String message, int typeMessage, String statusMessage
+        int idNotification, String message, String typeMessage, String statusMessage
     ) {
         this.idNotification = idNotification;
         this.message = message;
@@ -49,11 +49,11 @@ public abstract class NotificationComponent implements Notification{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public int getTypeMessage() {
+	public String getTypeMessage() {
 		return this.typeMessage;
 	}
 
-	public void setTypeMessage(int typeMessage) {
+	public void setTypeMessage(String typeMessage) {
 		this.typeMessage = typeMessage;
 	}
 	public String getStatusMessage() {

@@ -5,7 +5,7 @@
 	<feature manual="selected" name="Daily"/>
 	<feature automatic="unselected" name="SessionBased"/>
 	<feature automatic="selected" name="Pricing"/>
-	<feature manual="selected" name="Dynamic"/>
+	<feature name="Dynamic"/>
 	<feature automatic="selected" name="Payment"/>
 	<feature automatic="unselected" name="Merchant"/>
 	<feature automatic="selected" manual="selected" name="BankTransfer"/>

@@ -24,8 +24,7 @@ public class NotificationServiceImpl extends NotificationServiceComponent{
 
     public Notification createNotification(Map<String, Object> requestBody){
 		String message = (String) requestBody.get("message");
-		String typeMessageStr = (String) requestBody.get("typeMessage");
-		int typeMessage = Integer.parseInt(typeMessageStr);
+		String typeMessage = (String) requestBody.get("typeMessage");
 		String statusMessage = (String) requestBody.get("statusMessage");
 		
 		//to do: fix association attributes
@@ -38,8 +37,7 @@ public class NotificationServiceImpl extends NotificationServiceComponent{
 	public Notification createNotification(Map<String, Object> requestBody, int id){
 		int idNotification = id;
 		String message = (String) requestBody.get("message");
-		String typeMessageStr = (String) requestBody.get("typeMessage");
-		int typeMessage = Integer.parseInt(typeMessageStr);
+		String typeMessage = (String) requestBody.get("typeMessage");
 		String statusMessage = (String) requestBody.get("statusMessage");
 		
 		//to do: fix association attributes
@@ -54,8 +52,7 @@ public class NotificationServiceImpl extends NotificationServiceComponent{
 		Notification notification = Repository.getObject(id);
 		
 		notification.setMessage((String) requestBody.get("message"));
-		String typeMessageStr = (String) requestBody.get("typeMessage");
-		notification.setTypeMessage(Integer.parseInt(typeMessageStr));
+		notification.setTypeMessage((String) requestBody.get("typeMessage"));
 		
 		notification.setStatusMessage((String) requestBody.get("statusMessage"));
 		
