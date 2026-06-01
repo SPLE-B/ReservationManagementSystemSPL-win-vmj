@@ -57,10 +57,19 @@ public class PaymentServiceImpl extends PaymentServiceDecorator {
 		int id = Integer.parseInt(idStr);
 		
 		Payment paymentbanktransfer = Repository.getObject(id);
-		paymentbanktransfer = createPayment(requestBody, id);
+		String idBookingStr = (String) requestBody.get("idBooking");
+		paymentbanktransfer.setIdBooking(Integer.parseInt(idBookingStr));
+		String amountStr = (String) requestBody.get("amount");
+		paymentbanktransfer.setAmount(Integer.parseInt(amountStr));
+		paymentbanktransfer.setStatusPayment((String) requestBody.get("statusPayment"));
+		paymentbanktransfer.setMetodePayment((String) requestBody.get("metodePayment"));
+		Reservation.payment.banktransfer.model.PaymentImpl impl =
+			(Reservation.payment.banktransfer.model.PaymentImpl) paymentbanktransfer;
+		impl.setNamaBankAsal((String) requestBody.get("namaBankAsal"));
+		String noRekAsalStr = (String) requestBody.get("noRekAsal");
+		impl.setNoRekAsal(Integer.parseInt(noRekAsalStr));
 		
 		Repository.updateObject(paymentbanktransfer);
-		paymentbanktransfer = Repository.getObject(id);
 		
 		//to do: fix association attributes
 		

@@ -47,10 +47,12 @@ public class NotificationServiceImpl extends NotificationServiceDecorator {
 		int id = Integer.parseInt(idStr);
 		
 		Notification notificationemail = Repository.getObject(id);
-		notificationemail = createNotification(requestBody, id);
+		notificationemail.setMessage((String) requestBody.get("message"));
+		notificationemail.setTypeMessage((String) requestBody.get("typeMessage"));
+		notificationemail.setStatusMessage((String) requestBody.get("statusMessage"));
+		((Reservation.notification.email.model.NotificationImpl) notificationemail).setTargetEmail((String) requestBody.get("targetEmail"));
 		
 		Repository.updateObject(notificationemail);
-		notificationemail = Repository.getObject(id);
 		
 		//to do: fix association attributes
 		

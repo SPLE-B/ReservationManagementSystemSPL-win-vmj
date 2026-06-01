@@ -57,10 +57,17 @@ public class BookingTypeServiceImpl extends BookingTypeServiceDecorator {
 		int id = Integer.parseInt(idStr);
 		
 		BookingType bookingtypedaily = Repository.getObject(id);
-		bookingtypedaily = createBookingType(requestBody, id);
+		bookingtypedaily.setBookingDate((String) requestBody.get("bookingDate"));
+		bookingtypedaily.setStatusBooking((String) requestBody.get("statusBooking"));
+		String totalPriceStr = (String) requestBody.get("totalPrice");
+		bookingtypedaily.setTotalPrice(Integer.parseInt(totalPriceStr));
+		bookingtypedaily.setCreatedAt((String) requestBody.get("createdAt"));
+		String idResourceStr = (String) requestBody.get("idResource");
+		bookingtypedaily.setIdResource(Integer.parseInt(idResourceStr));
+		String jumlahHariStr = (String) requestBody.get("jumlahHari");
+		((Reservation.bookingtype.daily.model.BookingTypeImpl) bookingtypedaily).setJumlahHari(Integer.parseInt(jumlahHariStr));
 		
 		Repository.updateObject(bookingtypedaily);
-		bookingtypedaily = Repository.getObject(id);
 		
 		//to do: fix association attributes
 		

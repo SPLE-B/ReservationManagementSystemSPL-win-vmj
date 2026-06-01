@@ -1,4 +1,5 @@
 /PaymentResource.java
 /PaymentResourceComponent.java
+/.gitignore
 /PaymentResourceDecorator.java
 /PaymentResourceImpl.java

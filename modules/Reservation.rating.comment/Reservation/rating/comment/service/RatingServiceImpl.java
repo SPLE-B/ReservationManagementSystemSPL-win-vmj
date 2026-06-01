@@ -47,10 +47,13 @@ public class RatingServiceImpl extends RatingServiceDecorator {
 		int id = Integer.parseInt(idStr);
 		
 		Rating ratingcomment = Repository.getObject(id);
-		ratingcomment = createRating(requestBody, id);
+		String idResourceStr = (String) requestBody.get("idResource");
+		ratingcomment.setIdResource(Integer.parseInt(idResourceStr));
+		String scoreStr = (String) requestBody.get("score");
+		ratingcomment.setScore(Integer.parseInt(scoreStr));
+		((Reservation.rating.comment.model.RatingImpl) ratingcomment).setKomentar((String) requestBody.get("komentar"));
 		
 		Repository.updateObject(ratingcomment);
-		ratingcomment = Repository.getObject(id);
 		
 		//to do: fix association attributes
 		

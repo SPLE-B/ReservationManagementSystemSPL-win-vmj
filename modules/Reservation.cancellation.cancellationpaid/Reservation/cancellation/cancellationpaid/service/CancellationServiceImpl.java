@@ -45,10 +45,18 @@ public class CancellationServiceImpl extends CancellationServiceDecorator {
 		int id = Integer.parseInt(idStr);
 		
 		Cancellation cancellationcancellationpaid = Repository.getObject(id);
-		cancellationcancellationpaid = createCancellation(requestBody, id);
+		String idBookingStr = (String) requestBody.get("idBooking");
+		cancellationcancellationpaid.setIdBooking(Integer.parseInt(idBookingStr));
+		cancellationcancellationpaid.setReason((String) requestBody.get("reason"));
+		cancellationcancellationpaid.setCancelledAt((String) requestBody.get("cancelledAt"));
+		Reservation.cancellation.cancellationpaid.model.CancellationImpl impl =
+			(Reservation.cancellation.cancellationpaid.model.CancellationImpl) cancellationcancellationpaid;
+		String refundAmountStr = (String) requestBody.get("refundAmount");
+		impl.setRefundAmount(Integer.parseInt(refundAmountStr));
+		String penaltyFeeStr = (String) requestBody.get("penaltyFee");
+		impl.setPenaltyFee(Integer.parseInt(penaltyFeeStr));
 		
 		Repository.updateObject(cancellationcancellationpaid);
-		cancellationcancellationpaid = Repository.getObject(id);
 		
 		//to do: fix association attributes
 		

@@ -49,10 +49,14 @@ public class PricingServiceImpl extends PricingServiceDecorator {
 		int id = Integer.parseInt(idStr);
 		
 		Pricing pricingdynamic = Repository.getObject(id);
-		pricingdynamic = createPricing(requestBody, id);
+		String basePriceStr = (String) requestBody.get("basePrice");
+		pricingdynamic.setBasePrice(Integer.parseInt(basePriceStr));
+		String idResourceStr = (String) requestBody.get("idResource");
+		pricingdynamic.setIdResource(Integer.parseInt(idResourceStr));
+		String peakPercentageStr = (String) requestBody.get("peakPercentage");
+		((Reservation.pricing.dynamic.model.PricingImpl) pricingdynamic).setPeakPercentage(Integer.parseInt(peakPercentageStr));
 		
 		Repository.updateObject(pricingdynamic);
-		pricingdynamic = Repository.getObject(id);
 		
 		//to do: fix association attributes
 		
