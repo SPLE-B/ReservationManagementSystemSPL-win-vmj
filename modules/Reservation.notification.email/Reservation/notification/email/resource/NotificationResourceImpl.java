@@ -17,10 +17,14 @@ public class NotificationResourceImpl extends NotificationResourceDecorator {
 	protected NotificationServiceComponent recordComponent;
 	private NotificationServiceImpl notificationemailServiceImpl;
 
-    public NotificationResourceImpl (NotificationResourceComponent record) {
+    public NotificationResourceImpl (NotificationResourceComponent record, NotificationServiceComponent recordComponent) {
         super(record);
-		this.recordComponent  = new Reservation.notification.core.service.NotificationServiceImpl();
+		this.recordComponent = recordComponent;
 		this.notificationemailServiceImpl = new NotificationServiceImpl(recordComponent);
+    }
+
+    public NotificationResourceImpl (NotificationResourceComponent record) {
+        this(record, new Reservation.notification.core.service.NotificationServiceImpl());
     }
 
     

@@ -17,10 +17,14 @@ public class PricingResourceImpl extends PricingResourceDecorator {
 	protected PricingServiceComponent recordComponent;
 	private PricingServiceImpl pricingdynamicServiceImpl;
 
-    public PricingResourceImpl (PricingResourceComponent record) {
+    public PricingResourceImpl (PricingResourceComponent record, PricingServiceComponent recordComponent) {
         super(record);
-		this.recordComponent = new Reservation.pricing.core.service.PricingServiceImpl();
+		this.recordComponent = recordComponent;
 		this.pricingdynamicServiceImpl = new PricingServiceImpl(recordComponent);
+    }
+
+    public PricingResourceImpl (PricingResourceComponent record) {
+        this(record, new Reservation.pricing.core.service.PricingServiceImpl());
     }
 
     

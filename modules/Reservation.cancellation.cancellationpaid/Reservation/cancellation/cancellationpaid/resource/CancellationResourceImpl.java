@@ -17,10 +17,14 @@ public class CancellationResourceImpl extends CancellationResourceDecorator {
 	protected CancellationServiceComponent recordComponent;
 	private CancellationServiceImpl cancellationcancellationpaidServiceImpl;
 
-    public CancellationResourceImpl (CancellationResourceComponent record) {
+    public CancellationResourceImpl (CancellationResourceComponent record, CancellationServiceComponent recordComponent) {
         super(record);
-		this.recordComponent = new Reservation.cancellation.core.service.CancellationServiceImpl();
+		this.recordComponent = recordComponent;
 		this.cancellationcancellationpaidServiceImpl = new CancellationServiceImpl(recordComponent);
+    }
+
+    public CancellationResourceImpl (CancellationResourceComponent record) {
+        this(record, new Reservation.cancellation.core.service.CancellationServiceImpl());
     }
 
     

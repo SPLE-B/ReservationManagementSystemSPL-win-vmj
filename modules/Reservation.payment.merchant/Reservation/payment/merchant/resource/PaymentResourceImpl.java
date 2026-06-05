@@ -17,10 +17,14 @@ public class PaymentResourceImpl extends PaymentResourceDecorator {
 	protected PaymentServiceComponent recordComponent;
 	private PaymentServiceImpl paymentmerchantServiceImpl;
 
-    public PaymentResourceImpl (PaymentResourceComponent record) {
+    public PaymentResourceImpl (PaymentResourceComponent record, PaymentServiceComponent recordComponent) {
         super(record);
-		this.recordComponent  = new Reservation.payment.core.service.PaymentServiceImpl();
+		this.recordComponent = recordComponent;
 		this.paymentmerchantServiceImpl = new PaymentServiceImpl(recordComponent);
+    }
+
+    public PaymentResourceImpl (PaymentResourceComponent record) {
+        this(record, new Reservation.payment.core.service.PaymentServiceImpl());
     }
 
     

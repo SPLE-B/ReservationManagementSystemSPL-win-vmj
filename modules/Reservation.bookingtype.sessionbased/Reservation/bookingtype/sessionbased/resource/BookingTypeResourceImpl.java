@@ -17,10 +17,14 @@ public class BookingTypeResourceImpl extends BookingTypeResourceDecorator {
 	protected BookingTypeServiceComponent recordComponent;
 	private BookingTypeServiceImpl bookingtypesessionbasedServiceImpl;
 
-    public BookingTypeResourceImpl (BookingTypeResourceComponent record) {
+    public BookingTypeResourceImpl (BookingTypeResourceComponent record, BookingTypeServiceComponent recordComponent) {
         super(record);
-		this.recordComponent  = new Reservation.bookingtype.core.service.BookingTypeServiceImpl();
+		this.recordComponent = recordComponent;
 		this.bookingtypesessionbasedServiceImpl = new BookingTypeServiceImpl(recordComponent);
+    }
+
+    public BookingTypeResourceImpl (BookingTypeResourceComponent record) {
+        this(record, new Reservation.bookingtype.core.service.BookingTypeServiceImpl());
     }
 
     

@@ -13,7 +13,16 @@ public class BookingTypeResourceFactory {
         BookingTypeResource record = null;
         try {
             Class<?> clz = Class.forName(fullyQualifiedName);
-            Constructor<?> constructor = clz.getDeclaredConstructors()[0];
+            Constructor<?> constructor = null;
+            for (Constructor<?> candidate : clz.getDeclaredConstructors()) {
+                if (candidate.getParameterCount() == base.length) {
+                    constructor = candidate;
+                    break;
+                }
+            }
+            if (constructor == null) {
+                throw new IllegalArgumentException("No constructor with " + base.length + " arguments");
+            }
             record = (BookingTypeResource) constructor.newInstance(base);
         } catch (IllegalArgumentException e) {
             LOGGER.severe("Failed to create instance of BookingTypeResource.");

@@ -17,10 +17,14 @@ public class RatingResourceImpl extends RatingResourceDecorator {
 	protected RatingServiceComponent recordComponent;
 	private RatingServiceImpl ratingcommentServiceImpl;
 
-    public RatingResourceImpl (RatingResourceComponent record) {
+    public RatingResourceImpl (RatingResourceComponent record, RatingServiceComponent recordComponent) {
         super(record);
-		this.recordComponent  = new Reservation.rating.core.service.RatingServiceImpl();
+		this.recordComponent = recordComponent;
 		this.ratingcommentServiceImpl = new RatingServiceImpl(recordComponent);
+    }
+
+    public RatingResourceImpl (RatingResourceComponent record) {
+        this(record, new Reservation.rating.core.service.RatingServiceImpl());
     }
 
     
